@@ -1,0 +1,216 @@
+
+/* --------- Global Layout & Theme (simple, matches requirements only) ---------- */
+:root {
+  --panel-width: 300px;
+  --brand: #2563eb;
+  --brand-light: #e3f0ff;
+  --error-bg: #fde5e5;
+  --error-text: #b42323;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,sans-serif;
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin:0; padding:0; height:100%; }
+
+.app-shell {
+  display:flex;
+  height:100vh;
+  width:100%;
+  overflow:hidden;
+  background:#fff;
+  position:relative;
+}
+
+/* --------- Top Bar (Save Button) ---------- */
+.top-bar {
+  position:absolute;
+  top:0;
+  left:0;
+  right:var(--panel-width);
+  height:52px;
+  display:flex;
+  align-items:center;
+  justify-content:flex-end;
+  gap:12px;
+  padding:0 16px;
+  background:#fff;
+  border-bottom:1px solid #e4e8ef;
+  z-index:10;
+}
+
+button.primary {
+  background: var(--brand);
+  color:#fff;
+  border:none;
+  padding:8px 16px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:600;
+}
+button.primary:hover { background:#1d4fbf; }
+
+/* --------- Error Banner (validation failure) ---------- */
+.error-banner {
+  position:absolute;
+  top:54px;
+  left:50%;
+  transform:translateX(-50%);
+  background: var(--error-bg);
+  color: var(--error-text);
+  padding:10px 18px;
+  border-radius:10px;
+  font-size:13px;
+  font-weight:600;
+  box-shadow:0 4px 12px rgba(0,0,0,.12);
+  z-index:20;
+}
+
+/* --------- Sidebar (Nodes Panel / Settings Panel) ---------- */
+.sidebar {
+  width: var(--panel-width);
+  background:#fff;
+  border-left:1px solid #e4e8ef;
+  display:flex;
+  flex-direction:column;
+  padding:12px 16px 20px;
+  gap:18px;
+  z-index:15;
+}
+
+.sidebar h3 {
+  margin:0;
+  font-size:14px;
+  letter-spacing:.5px;
+  font-weight:600;
+  text-transform:uppercase;
+  color:#444;
+}
+
+.node-tile {
+  border:1.5px solid var(--brand);
+  background:#fff;
+  padding:16px 12px;
+  font-size:14px;
+  font-weight:500;
+  border-radius:12px;
+  text-align:center;
+  cursor:grab;
+  user-select:none;
+  transition:.15s background,.15s border-color;
+}
+.node-tile:hover {
+  background: var(--brand-light);
+}
+
+.settings-group {
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.settings-group label {
+  font-size:12px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.5px;
+}
+
+.settings-group textarea {
+  width:100%;
+  min-height:120px;
+  resize:vertical;
+  padding:10px;
+  font:inherit;
+  border:1px solid #b8c4d2;
+  border-radius:10px;
+  line-height:1.4;
+}
+
+button.secondary {
+  background:#fff;
+  border:1px solid var(--brand);
+  color:var(--brand);
+  padding:8px 14px;
+  font-size:14px;
+  border-radius:8px;
+  cursor:pointer;
+  font-weight:500;
+  transition:.15s background,.15s color;
+}
+button.secondary:hover {
+  background:var(--brand);
+  color:#fff;
+}
+
+.info {
+  margin:0;
+  font-size:12px;
+  line-height:1.4;
+  color:#444;
+}
+
+footer.small {
+  margin-top:auto;
+  font-size:11px;
+  color:#657080;
+  text-align:center;
+}
+
+/* --------- Node Styles ---------- */
+.node-container {
+  background:#fff;
+  border:1.5px solid #d5dee7;
+  border-radius:18px;
+  min-width:260px;
+  max-width:280px;
+  font-size:13px;
+  box-shadow:0 4px 12px rgba(0,0,0,.08);
+  overflow:hidden;
+  transition:.18s border-color,.18s box-shadow;
+}
+
+.react-flow__node.selected .node-container {
+  border-color: var(--brand);
+  box-shadow:0 0 0 2px rgba(37,99,235,.4),0 4px 12px rgba(0,0,0,.15);
+}
+
+.node-container.validation-error {
+  border-color:#d32f2f;
+  box-shadow:0 0 0 2px rgba(211,47,47,.4);
+}
+
+.node-header {
+  background:#d9f5f3;
+  color:#064d48;
+  font-weight:600;
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-size:14px;
+}
+
+.node-body {
+  padding:14px 16px 18px;
+  line-height:1.35;
+  white-space:pre-wrap;
+}
+
+.node-body .placeholder {
+  opacity:.45;
+  font-style:italic;
+}
+
+.react-flow__handle {
+  width:10px;
+  height:10px;
+  border:2px solid #fff;
+  box-shadow:0 0 0 1px #555;
+}
+
+/* Ensure canvas starts below top bar */
+.canvas-wrapper {
+  flex:1;
+  margin-top:52px; /* same as top bar height */
+}
