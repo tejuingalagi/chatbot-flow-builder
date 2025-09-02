@@ -4,7 +4,7 @@ This project is the implementation of the BiteSpeed frontend assignment using **
 
 ## Live Demo
 
-[Click here to view the app](https://bite-speed-chatbot-flow-builder-tmz.vercel.app/)
+[Click here to view the app](https://chatbot-flow-builder-74i.vercel.app/) 
 
 
 ## Run Locally
